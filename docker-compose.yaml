@@ -1,0 +1,43 @@
+version: "3.7"
+
+services:
+  health_db_local:
+    image: postgres:latest
+    restart: unless-stopped
+    container_name: health_db_local
+    tty: true
+    environment:
+      POSTGRES_DB: healthapp
+      POSTGRES_USER: healthapp
+      POSTGRES_PASSWORD: test123
+    ports:
+      - "5433:5432"
+    volumes:
+      - health_postgres_volume_local:/var/lib/postgresql/data/
+    networks:
+      - health_network_local
+
+  health_rabbitmq_local:
+    container_name: health_rabbitmq_local
+    image: heidiks/rabbitmq-delayed-message-exchange:latest
+    restart: unless-stopped
+    ports:
+      - '4369:4369'
+      - '5551:5551'
+      - '5552:5552'
+      - '5672:5672'
+      - '25672:25672'
+      - '15672:15672'
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=test123456
+    networks:
+      - health_network_local
+
+networks:
+  health_network_local:
+    driver: bridge
+
+volumes:
+  health_postgres_volume_local:
+  health_rabbitmq_volume_local:
