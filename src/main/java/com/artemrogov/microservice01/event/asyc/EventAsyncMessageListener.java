@@ -5,7 +5,6 @@ import org.springframework.context.event.EventListener;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.EnableAsync;
 
-
 @EnableAsync
 @Configuration
 public class EventAsyncMessageListener {
