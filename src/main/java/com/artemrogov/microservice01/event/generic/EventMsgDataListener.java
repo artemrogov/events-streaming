@@ -1,6 +1,5 @@
 package com.artemrogov.microservice01.event.generic;
 
-
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 

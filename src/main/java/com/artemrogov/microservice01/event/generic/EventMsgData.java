@@ -3,7 +3,7 @@ package com.artemrogov.microservice01.event.generic;
 import org.springframework.core.ResolvableType;
 import org.springframework.core.ResolvableTypeProvider;
 
-public class EventMsgData <T> implements ResolvableTypeProvider {
+public class EventMsgData <T>  implements ResolvableTypeProvider {
 
     private Object source;
     private T message;
